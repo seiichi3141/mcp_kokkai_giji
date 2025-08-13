@@ -48,7 +48,7 @@ tmp/
 temp/
 .tmp/
 
-# Package manager files
-package-lock.json
+# Package manager files (keep lock files for reproducible builds)
+# package-lock.json should be committed
 yarn.lock
 pnpm-lock.yaml

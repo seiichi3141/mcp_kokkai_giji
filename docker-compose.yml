@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  kokkai-giji-mcp:
+    # ローカルビルドの場合
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Docker Hubイメージを使用する場合（以下のコメントを外す）
+    # image: your-dockerhub-username/kokkai-giji-mcp:latest
+    container_name: kokkai-giji-mcp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # 設定ファイルをマウント（必要に応じて）
+      - ./config:/app/config:ro
+    networks:
+      - mcp-network
+    labels:
+      - "mcp.service=kokkai-giji"
+      - "mcp.version=1.0.0"
+    
+  # MCPクライアント用のサンプル設定（オプション）
+  mcp-client:
+    image: alpine:latest
+    container_name: mcp-client
+    depends_on:
+      - kokkai-giji-mcp
+    command: >
+      sh -c "
+        echo 'MCP Client container ready';
+        echo 'Use docker exec -it mcp-client sh to connect';
+        tail -f /dev/null
+      "
+    volumes:
+      # Claude Desktop設定ファイルの例をマウント
+      - ./docker/claude_desktop_config.json:/config/claude_desktop_config.json:ro
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge
+    name: mcp-network
