@@ -6,6 +6,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema
 } from '@modelcontextprotocol/sdk/types.js';
+import { setupPrompts } from './prompts.js';
 
 interface SearchParams {
   startRecord?: number;
@@ -93,11 +94,13 @@ class KokkaiGijiServer {
       {
         capabilities: {
           tools: {},
+          prompts: {},
         },
       }
     );
 
     this.setupHandlers();
+    setupPrompts(this.server);
   }
 
   private setupHandlers() {

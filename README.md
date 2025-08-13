@@ -4,9 +4,24 @@ Model Context Protocol (MCP) を使用して、国会議事録検索APIにアク
 
 ## 機能
 
-- 会議単位での議事録検索
-- 発言単位での議事録検索
-- 特定会議の詳細取得（全文）
+### ツール機能
+- 会議単位簡易出力（search_meetings_simple）
+- 会議単位出力（search_meetings_full）
+- 発言単位出力（search_speeches）
+
+### プロンプト機能
+AIアシスタントに国会議事録の効果的な検索方法を指示：
+- **search_with_urls**: 発言URLを必ず含めて回答するよう指示
+- **search_diet_proceedings**: 効率的な検索戦略のガイド
+- **analyze_speech_patterns**: 発言パターンの分析方法
+- **track_legislative_progress**: 法案審議の追跡方法
+- **find_specific_speaker**: 特定発言者の検索
+- **search_by_topic**: トピック別の議論検索
+
+各検索結果には以下のURLが含まれます：
+- **speechURL**: 個別発言への直接リンク
+- **meetingURL**: 会議録全体へのリンク
+- **pdfURL**: PDF版へのリンク（存在する場合）
 
 ## インストール
 
