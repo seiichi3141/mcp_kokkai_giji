@@ -33,21 +33,22 @@ npm run build
 
 ### Dockerを使用する場合
 
-#### ローカルビルド
+#### Docker Hubを使用（推奨）
+```bash
+# Docker Hubからイメージを取得
+docker pull seiichi3141/kokkai-giji-mcp:latest
+
+# コンテナを起動
+docker run --rm -i seiichi3141/kokkai-giji-mcp:latest
+```
+
+#### ローカルビルド（開発時）
 ```bash
 # Dockerイメージをビルド
 docker build -t kokkai-giji-mcp .
 
 # Docker Composeでサービス起動
 docker-compose up -d
-```
-
-#### Docker Hubからプル
-```bash
-# Docker Hubからイメージを取得
-docker pull your-dockerhub-username/kokkai-giji-mcp:latest
-
-# docker-compose.ymlのimage行のコメントを外して使用
 ```
 
 ## 使用方法
@@ -68,7 +69,24 @@ docker pull your-dockerhub-username/kokkai-giji-mcp:latest
 }
 ```
 
-#### Docker実行の場合
+#### Docker Hubイメージ使用の場合
+```json
+{
+  "mcpServers": {
+    "kokkai-giji": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "seiichi3141/kokkai-giji-mcp:latest"
+      ]
+    }
+  }
+}
+```
+
+#### ローカルDockerコンテナ使用の場合
 ```json
 {
   "mcpServers": {
