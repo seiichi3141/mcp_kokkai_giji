@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "kokkai-giji": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "seiichi3141/kokkai-giji-mcp:latest"
+      ]
+    }
+  }
+}

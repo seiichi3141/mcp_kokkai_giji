@@ -25,15 +25,36 @@ AIアシスタントに国会議事録の効果的な検索方法を指示：
 
 ## インストール
 
+### 通常のインストール
 ```bash
 npm install
 npm run build
+```
+
+### Dockerを使用する場合
+
+#### ローカルビルド
+```bash
+# Dockerイメージをビルド
+docker build -t kokkai-giji-mcp .
+
+# Docker Composeでサービス起動
+docker-compose up -d
+```
+
+#### Docker Hubからプル
+```bash
+# Docker Hubからイメージを取得
+docker pull your-dockerhub-username/kokkai-giji-mcp:latest
+
+# docker-compose.ymlのimage行のコメントを外して使用
 ```
 
 ## 使用方法
 
 ### Claude Desktop での設定
 
+#### 通常実行の場合
 `claude_desktop_config.json` に以下を追加:
 
 ```json
@@ -46,6 +67,41 @@ npm run build
   }
 }
 ```
+
+#### Docker実行の場合
+```json
+{
+  "mcpServers": {
+    "kokkai-giji": {
+      "command": "docker",
+      "args": [
+        "exec",
+        "-i",
+        "kokkai-giji-mcp",
+        "node",
+        "dist/index.js"
+      ]
+    }
+  }
+}
+```
+
+### 開発・テスト用コマンド
+
+```bash
+# 開発モード（ソースコードから直接実行）
+npm run dev
+
+# テスト実行
+npm test
+
+# テスト（ウォッチモード）
+npm run test:watch
+
+# カバレッジ付きテスト
+npm run test:coverage
+```
+
 
 ## 利用可能なツール
 
