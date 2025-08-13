@@ -17,6 +17,10 @@ out/
 # Keep TypeScript source files
 !src/**/*.ts
 
+# Keep configuration files
+!jest.config.js
+!*.config.js
+
 # Environment variables
 .env
 .env.local
