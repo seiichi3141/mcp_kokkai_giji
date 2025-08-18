@@ -44,7 +44,7 @@ export function setupPrompts(server: Server) {
         return {
           messages: [
             {
-              role: 'system',
+              role: 'assistant',
               content: {
                 type: 'text',
                 text: `あなたは国会議事録検索システムのMCPツールを使用して、ユーザーの質問に答えるアシスタントです。
@@ -85,7 +85,7 @@ export function setupPrompts(server: Server) {
         return {
           messages: [
             {
-              role: 'system',
+              role: 'assistant',
               content: {
                 type: 'text',
                 text: `国会議事録検索の専門アシスタントとして、以下の点に注意して検索を実行してください：
@@ -122,7 +122,7 @@ ${args?.query || '検索したい内容'}`
         return {
           messages: [
             {
-              role: 'system',
+              role: 'assistant',
               content: {
                 type: 'text',
                 text: `発言パターン分析の専門家として、以下の手順で分析を行ってください：
@@ -169,7 +169,7 @@ ${args?.target || '分析対象'}`
         return {
           messages: [
             {
-              role: 'system',
+              role: 'assistant',
               content: {
                 type: 'text',
                 text: `法案審議追跡の専門家として、以下の手順で追跡を行ってください：
@@ -219,7 +219,7 @@ ${args?.bill || '追跡したい法案'}`
         return {
           messages: [
             {
-              role: 'system',
+              role: 'assistant',
               content: {
                 type: 'text',
                 text: `特定の発言者の検索を行う際は、以下の点に注意してください：
@@ -265,7 +265,7 @@ ${args?.context || ''}`
         return {
           messages: [
             {
-              role: 'system',
+              role: 'assistant',
               content: {
                 type: 'text',
                 text: `特定のトピックに関する国会議論を検索する際のガイドライン：
