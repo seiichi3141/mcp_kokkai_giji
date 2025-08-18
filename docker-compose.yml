@@ -21,7 +21,7 @@ services:
       - mcp-network
     labels:
       - "mcp.service=kokkai-giji"
-      - "mcp.version=1.0.0"
+      - "mcp.version=1.0.1"
     
   # MCPクライアント用のサンプル設定（オプション）
   mcp-client:
